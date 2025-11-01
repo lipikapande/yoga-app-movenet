@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class PracticeNowPage extends StatelessWidget {
   @override
@@ -25,11 +26,28 @@ class PracticeNowPage extends StatelessWidget {
             ),
             SizedBox(height: 30),
             ElevatedButton.icon(
-              onPressed: () {
-                // TODO: Connect to Flask/FastAPI backend
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Starting pose detection...')),
-                );
+              onPressed: () async {
+                final uri = Uri.parse('http://127.0.0.1:8000/start-detection');
+                try {
+                  final response = await http
+                      .get(uri)
+                      .timeout(Duration(seconds: 5));
+                  if (response.statusCode == 200) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Starting pose detection...')),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Server error: ${response.statusCode}'),
+                      ),
+                    );
+                  }
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Failed to reach server: $e')),
+                  );
+                }
               },
               icon: Icon(Icons.play_arrow),
               label: Text('Start Detection'),

@@ -1,1 +1,3 @@
 commands.txt
+venv/
+__pycache__/
