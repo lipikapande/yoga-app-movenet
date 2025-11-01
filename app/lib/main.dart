@@ -31,7 +31,7 @@ class DashboardScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Yoga Assistant',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.deepPurple,
       ),

@@ -6,7 +6,7 @@ class PracticeNowPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Practice Now'),
+        title: Text('Practice Now', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.deepPurple,
       ),
       body: Center(
@@ -50,7 +50,10 @@ class PracticeNowPage extends StatelessWidget {
                 }
               },
               icon: Icon(Icons.play_arrow),
-              label: Text('Start Detection'),
+              label: Text(
+                'Start Detection',
+                style: TextStyle(color: Colors.white),
+              ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepPurple,
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),

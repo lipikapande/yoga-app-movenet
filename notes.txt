@@ -1,0 +1,2 @@
+1. venv create karo
+2. 
