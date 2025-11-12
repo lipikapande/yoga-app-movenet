@@ -120,22 +120,22 @@ def get_angle_feedback(user_angles, ideal_angles_row, tolerance=15):
         if diff > tolerance:
             if 'elbow' in angle_name:
                 action = "Straighten" if user_angle < ideal_angle else "Bend"
-                feedback = f"{action} {display_name}! (Current: {int(user_angle)}°, Target: {int(ideal_angle)}°)"
+                feedback = f"{action} {display_name}! (Current: {int(user_angle)}, Target: {int(ideal_angle)})"
             elif 'knee' in angle_name:
                 action = "Straighten" if user_angle < ideal_angle else "Bend"
-                feedback = f"{action} {display_name}! (Current: {int(user_angle)}°, Target: {int(ideal_angle)}°)"
+                feedback = f"{action} {display_name}! (Current: {int(user_angle)}, Target: {int(ideal_angle)})"
             elif 'hip' in angle_name:
                 action = "Open hip more" if user_angle < ideal_angle else "Close hip angle"
-                feedback = f"{display_name.capitalize()}: {action} (Current: {int(user_angle)}°, Target: {int(ideal_angle)}°)"
+                feedback = f"{display_name.capitalize()}: {action} (Current: {int(user_angle)}, Target: {int(ideal_angle)})"
             elif 'shoulder' in angle_name:
                 action = "Raise arm higher" if user_angle < ideal_angle else "Lower arm"
-                feedback = f"{display_name.capitalize()}: {action} (Current: {int(user_angle)}°, Target: {int(ideal_angle)}°)"
+                feedback = f"{display_name.capitalize()}: {action} (Current: {int(user_angle)}, Target: {int(ideal_angle)})"
             elif 'torso' in angle_name:
-                feedback = f"Lean more vertical (Current: {int(user_angle)}°, Target: {int(ideal_angle)}°)" if user_angle > ideal_angle else f"Tilt torso forward (Current: {int(user_angle)}°, Target: {int(ideal_angle)}°)"
+                feedback = f"Lean more vertical (Current: {int(user_angle)}, Target: {int(ideal_angle)})" if user_angle > ideal_angle else f"Tilt torso forward (Current: {int(user_angle)}, Target: {int(ideal_angle)})"
             else:
-                feedback = f"Adjust {display_name} (Current: {int(user_angle)}°, Target: {int(ideal_angle)}°)"
+                feedback = f"Adjust {display_name} (Current: {int(user_angle)}, Target: {int(ideal_angle)})"
             return feedback, kp_idx, user_angle, ideal_angle
-    return "Perfect form! 🎯", None, None, None
+    return "Perfect form!", None, None, None
 
 def calculate_overall_similarity(user_angles, ideal_angles_row):
     total_diff = 0
